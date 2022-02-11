@@ -1,11 +1,13 @@
 // Assignment code here
 
 var pwCriteria = function() {
+    //
     var pwLength = window.prompt("How long should the password be? (8-128 characters)")
     if (pwLength === "" || pwLength === null) {
         window.alert("You need to provide a valid answer! Please try again.");
         return pwCriteria();
     }
+
     var pwLength = JSON.parse(pwLength);
 
     if (pwLength < 8 || pwLength > 128) {
@@ -23,23 +25,21 @@ var pwCriteria = function() {
     };
     console.log("PW lowercase is " + pwLowCase);
 
+
     var pwUpCase = window.confirm("Do you want to include UPPERCASE letters?");
     if (pwUpCase) {
         window.alert("UPPERCASE will be used");
-        // return true;
     } else if (!pwUpCase) {
         window.alert("UPPERCASE will not be used");
-        // return false;
     };
     console.log("PW uppercase is " + pwUpCase);
+
 
     var pwNum = window.confirm("Do you want to include numbers?");
     if (pwNum) {
         window.alert("Numbers will be used");
-        // return true;
     } else if (!pwNum) {
         window.alert("Numbers will not be used");
-        // return false;
     };
     console.log("PW numeric is " + pwNum);
 
@@ -47,12 +47,16 @@ var pwCriteria = function() {
     var pwSpcl = window.confirm("Do you want to include special characters? (!@#$%^&*...");
     if (pwSpcl) {
         window.alert("special characters will be used");
-        // return true;
     } else if (!pwSpcl) {
         window.alert("special characters will not be used");
-        // return false;
     };
     console.log("PW special char is " + pwSpcl);
+
+    // validate that at least one char type was chosen
+    if (!pwUpCase & !pwLowCase & !pwNum & !pwSpcl) {
+        window.alert("You need to choose at least one character type! Please try again.");
+        return pwCriteria();
+    }
 
     var pwInfo = {
         length: pwLength,
@@ -82,8 +86,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
-pwCriteria();
-// writePassword();
+generateBtn.addEventListener("click", pwCriteria, writePassword);
