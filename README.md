@@ -7,6 +7,9 @@ Repo URL:
 https://github.com/joelcutler/pw-gen
 
 
+images.githubusercontent.com/96545401/153727009-7aa05c40-3b71-4a18-b09c-057a51f650ef.JPG)
+
+
 
 Create an application that generates a random password based on user-selected criteria. The app runs in the browser and features dynamically updated HTML and CSS powered by your JavaScript code. It has a clean and polished user interface and is responsive, which ensures that it adapts to multiple screen sizes.
 
