@@ -1,14 +1,12 @@
 // Assignment code here
-
-var pwInfo = {
-    length: 0,
-    lowercase: false,
-    uppercase: false,
-    numeric: false,
-    special: false,
-};
-
 var pwCriteria = function() {
+    var pwInfo = {
+        length: 0,
+        lowercase: false,
+        uppercase: false,
+        numeric: false,
+        special: false,
+    };
 
     while (true) {
         var pwLength = window.prompt("How long should the password be? (8-128 characters)")
@@ -83,12 +81,39 @@ var pwCriteria = function() {
 var generatePassword = function() {
     var pwObject = pwCriteria();
     var password = "";
-    var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var charLow = "abcdefghijklmnopqrstuvwxyz";
+    var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var charNum = "1234567890";
     var charSpec = "!@#$%^&*()";
+    var charPool = "";
 
 
+    if (pwObject.lowercase) {
+        charPool = charPool + charLow
+    };
+    if (pwObject.uppercase) {
+        charPool = charPool + charUp
+    };
+    if (pwObject.numeric) {
+        charPool = charPool + charNum
+    };
+    if (pwObject.special) {
+        charPool = charPool + charSpec
+            // charPool += charSpec
+    };
+    // console.log(charPool);
+
+    for (var i = 0; i < pwObject.length; i++) {
+        password += charPool.charAt(Math.floor(Math.random() * charPool.length));
+    }
+    console.log(password);
+    return password;
+
+    //check to see which char types were selected
+    // create pool based on char type selections
+    //based on selections randomly choose chars from those char types (concatenate those into a new var that's the larger char pool)
+    //change pw var to those randomly chosen chars
+    //print those to page
 };
 
 //index the arrays
@@ -107,28 +132,19 @@ function writePassword() {
     var passwordText = document.querySelector("#password-area");
 
     passwordText.value = password;
-
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", pwCriteria, writePassword);
-
-
-
-
+generateBtn.addEventListener("click", writePassword);
 
 
 // TINKERING CRAP VV
-
-
 
 
 // var charUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 // var charLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // var charNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 // var charSpec = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
-
-
 
 
 // var generatePassword = function() {
