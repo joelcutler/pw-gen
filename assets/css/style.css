@@ -97,7 +97,7 @@ button[disabled] {
     float: right;
 }
 
-#password {
+#password-area {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

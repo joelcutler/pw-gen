@@ -1,7 +1,8 @@
 // Assignment code here
 
+var pwInfo = [];
+
 var pwCriteria = function() {
-    //
     var pwLength = window.prompt("How long should the password be? (8-128 characters)")
     if (pwLength === "" || pwLength === null) {
         window.alert("You need to provide a valid answer! Please try again.");
@@ -66,9 +67,46 @@ var pwCriteria = function() {
         special: pwSpcl,
     };
     console.log(pwInfo);
+
+    var savePwInfo = function() {
+        localStorage.setItem("pwInfo", JSON.stringify(pwInfo));
+    };
+    savePwInfo();
 };
 
+var loadPwInfo = function() {
+    var savedPwCrit = localStorage.getItem("pwInfo");
+    // console.log(savedPwCrit);
+};
+loadPwInfo();
 
+
+var generatePassword = function() {
+    var result = "";
+    var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var charLow = "abcdefghijklmnopqrstuvwxyz";
+    var charNum = "1234567890";
+    var charSpec = "!@#$%^&*()";
+
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    };
+    return result;
+};
+console.log(generatePassword(5));
+
+// function makeid(length) {
+//     var result = '';
+//     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//     var charactersLength = characters.length;
+//     for (var i = 0; i < length; i++) {
+//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     }
+//     return result;
+// }
+
+// console.log(makeid(5));
 
 
 
@@ -79,7 +117,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+    var passwordText = document.querySelector("#password-area");
 
     passwordText.value = password;
 
