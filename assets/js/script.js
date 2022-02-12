@@ -1,6 +1,12 @@
 // Assignment code here
 
 var pwInfo = [];
+var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var charLow = "abcdefghijklmnopqrstuvwxyz";
+var charNum = "1234567890";
+var charSpec = "!@#$%^&*()";
+
+
 
 var pwCriteria = function() {
     var pwLength = window.prompt("How long should the password be? (8-128 characters)")
@@ -58,57 +64,7 @@ var pwCriteria = function() {
         window.alert("You need to choose at least one character type! Please try again.");
         return pwCriteria();
     }
-
-    var pwInfo = {
-        length: pwLength,
-        lowercase: pwLowCase,
-        uppercase: pwUpCase,
-        numeric: pwNum,
-        special: pwSpcl,
-    };
-    console.log(pwInfo);
-
-    var savePwInfo = function() {
-        localStorage.setItem("pwInfo", JSON.stringify(pwInfo));
-    };
-    savePwInfo();
 };
-
-var loadPwInfo = function() {
-    var savedPwCrit = localStorage.getItem("pwInfo");
-    // console.log(savedPwCrit);
-};
-loadPwInfo();
-
-
-var generatePassword = function() {
-    var result = "";
-    var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var charLow = "abcdefghijklmnopqrstuvwxyz";
-    var charNum = "1234567890";
-    var charSpec = "!@#$%^&*()";
-
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    };
-    return result;
-};
-console.log(generatePassword(5));
-
-// function makeid(length) {
-//     var result = '';
-//     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//     var charactersLength = characters.length;
-//     for (var i = 0; i < length; i++) {
-//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
-//     }
-//     return result;
-// }
-
-// console.log(makeid(5));
-
-
 
 
 // Get references to the #generate element
@@ -125,3 +81,64 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", pwCriteria, writePassword);
+
+
+
+
+
+
+// TINKERING CRAP VV
+
+
+// var generatePassword = function() {
+//     var result = "";
+//     var charUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     var charLow = "abcdefghijklmnopqrstuvwxyz";
+//     var charNum = "1234567890";
+//     var charSpec = "!@#$%^&*()";
+
+//     var charactersLength = characters.length;
+//     for (var i = 0; i < length; i++) {
+//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     };
+//     return result;
+// };
+
+
+
+
+// function makeid(length) {
+//     var result = '';
+//     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//     var charactersLength = characters.length;
+//     for (var i = 0; i < length; i++) {
+//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     }
+//     return result;
+// }
+
+// console.log(makeid(5));
+
+
+
+// var pwInfo = {
+//   length: pwLength,
+//   lowercase: pwLowCase,
+//   uppercase: pwUpCase,
+//   numeric: pwNum,
+//   special: pwSpcl,
+// };
+// console.log(pwInfo);
+
+// var savePwInfo = function() {
+//   localStorage.setItem("pwInfo", JSON.stringify(pwInfo));
+// };
+
+
+
+
+//  var loadPwInfo = function() {
+//   var savedPwCrit = localStorage.getItem("pwInfo");
+//  console.log(savedPwCrit);
+// };
+// loadPwInfo();
