@@ -10,7 +10,7 @@ var pwCriteria = function() {
 
     while (true) {
         var pwLength = window.prompt("How long should the password be? (8-128 characters)")
-        if (pwLength >= 8 || pwLength >= 128) {
+        if (pwLength >= 8 && pwLength <= 128) {
             pwInfo.length = pwLength;
             break;
 
